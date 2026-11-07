@@ -1,0 +1,19 @@
+{
+  "name": "hindsight",
+  "version": "1.0.0",
+  "description": "The pick journal that remembers who was right: market calls scored with Tatum, remembered on Walrus Memory.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@mysten-incubation/memwal": "^0.1.13"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

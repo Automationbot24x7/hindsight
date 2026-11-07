@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hindsight — the pick journal that remembers who was right</title>
+<meta name="description" content="Log market calls from any voice. Hindsight scores them with live Tatum prices and remembers every outcome on Walrus Memory, so it learns who to trust.">
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="icon.svg" alt="" width="34" height="34"><div><h1>Hindsight</h1><p>The pick journal that remembers who was right.</p></div></div>
+  <div class="memchip" id="memchip" title="Memories stored on Walrus mainnet">
+    <span class="dot"></span><span id="memtext">Memory…</span>
+  </div>
+</header>
+
+<section class="ticker" id="ticker"></section>
+
+<main class="grid">
+  <section class="card" id="logcard">
+    <h2>Log a call</h2>
+    <form id="pickform" autocomplete="off">
+      <label>Voice <input name="voice" list="voicelist" placeholder="e.g. Me, @analyst, Uncle Raj" required maxlength="40"></label>
+      <datalist id="voicelist"></datalist>
+      <label>Voice's Sui wallet <small>(optional, shows their skin in the game)</small> <input name="suiAddress" placeholder="0x…" maxlength="66" pattern="0x[0-9a-fA-F]{1,64}"></label>
+      <div class="row">
+        <label>Asset <select name="asset" id="assetsel"></select></label>
+        <label>Call <select name="direction"><option value="above">closes ABOVE</option><option value="below">closes BELOW</option></select></label>
+      </div>
+      <div class="row">
+        <label>Target $ <input name="target" type="number" step="any" min="0" required></label>
+        <label>Within <select name="deadlineMinutes">
+          <option value="5">5 min</option><option value="15">15 min</option><option value="60" selected>1 hour</option>
+          <option value="1440">1 day</option><option value="10080">1 week</option></select></label>
+      </div>
+      <label>Confidence <span id="confval">70%</span><input name="confidence" type="range" min="50" max="99" value="70"></label>
+      <label>Why? <input name="note" maxlength="200" placeholder="optional reasoning"></label>
+      <div id="brief" class="brief" hidden></div>
+      <button type="submit" id="submitbtn">Log call &amp; remember</button>
+      <p class="hint" id="formhint"></p>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Who to trust <small>learned from outcomes</small></h2>
+    <div id="voices" class="voices"></div>
+    <button class="ghost" id="rebuildbtn" title="Recompute trust using only what Walrus Memory remembers">Rebuild trust from Walrus memory</button>
+    <p class="hint" id="rebuildhint"></p>
+  </section>
+
+  <section class="card wide">
+    <h2>Consensus <small>raw crowd vs trust-weighted</small></h2>
+    <div id="consensus" class="consensus"></div>
+  </section>
+
+  <section class="card wide">
+    <h2>Calls</h2>
+    <div id="picks" class="picks"></div>
+  </section>
+
+  <section class="card">
+    <h2>Lessons learned</h2>
+    <ul id="lessons" class="lessons"></ul>
+  </section>
+
+  <section class="card">
+    <h2>Ask Hindsight</h2>
+    <form id="askform"><input name="q" placeholder="Who keeps getting SUI wrong?" maxlength="300"><button>Recall</button></form>
+    <ul id="answers" class="mems"></ul>
+  </section>
+
+  <section class="card wide">
+    <h2>Memory receipts <small>every write is a Walrus blob on mainnet</small></h2>
+    <ul id="receipts" class="receipts"></ul>
+    <p class="hint" id="netline"></p>
+  </section>
+</main>
+
+<footer>Prices and Sui mainnet data via Tatum · Long-term memory on Walrus · <a href="https://github.com/Automationbot24x7/hindsight" target="_blank" rel="noopener">Source</a></footer>
+<script src="app.js" type="module"></script>
+</body>
+</html>
