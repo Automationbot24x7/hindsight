@@ -1,6 +1,48 @@
 [
  {
   "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Uncle Raj\" called ETH ABOVE $2250 by 2026-11-14 10:08 UTC with 80% confidence (price when called: $2246). Reasoning: The group chat says ETH is next. id=p_892dc145",
+  "blob_id": "briy7HPvRPx_9fW-Nt_EFzm787aGxHoUDxfl3aYwnNU",
+  "at": "2026-11-07T10:08:46.957Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Uncle Raj\" called ETH ABOVE $2248 by 2026-11-14 10:01 UTC with 80% confidence (price when called: $2244). Reasoning: The group chat says ETH is next. id=p_fc5e12be",
+  "blob_id": "sU0QYyPqC_l4f_O__IIUxmuvUjyUabkIc2rMEb3ytm8",
+  "at": "2026-11-07T10:01:47.431Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Uncle Raj\" called SUI ABOVE $0.866 by 2026-11-08 09:41 UTC with 90% confidence (price when called: $0.864). Reasoning: Everyone in the group chat is buying. id=p_b13ccceb",
+  "blob_id": "550OmBGNawBwBgvOIcYAifI6MmieIrqMgr3csH8yXIo",
+  "at": "2026-11-07T09:41:58.093Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Uncle Raj\" called SUI ABOVE $0.866 by 2026-11-08 09:38 UTC with 90% confidence (price when called: $0.864). Reasoning: Everyone in the group chat is buying. id=p_fc5b6ebe",
+  "blob_id": "cFE6a7Y2ySmY9P0zPDF7RIeb4WFyaEI1x4KkDi-Cyl0",
+  "at": "2026-11-07T09:39:13.833Z"
+ },
+ {
+  "kind": "insight",
+  "text": "[hindsight:insight] \"Me\" took the opposite side of Priya on both BTC and ETH and lost both, missing narrowly: BTC closed $75980 versus $75911, ETH $2243 versus $2246 [1][2][6][10].",
+  "blob_id": "LbA9T1YnNU1WRNMGvRPw6oUDWPRF2KsyQPLQKrG9PZg",
+  "at": "2026-11-07T09:25:07.643Z"
+ },
+ {
+  "kind": "insight",
+  "text": "[hindsight:insight] Priya (desk analyst) was right 3 of 4 times at 60–75% confidence, missing only her lowest-confidence call (SOL, 60%), while @MoonBoyMax went 0/5 at 90–99% [3][6][10][11][4][5][7][8][9].",
+  "blob_id": "XdQRIsuTH7nJnkV1ad_0_vCtOmkXqy0luKYHqRi0woI",
+  "at": "2026-11-07T09:24:50.879Z"
+ },
+ {
+  "kind": "insight",
+  "text": "[hindsight:insight] On SUI, which closed at $0.871, @OnchainOtter went 3/3 at 78–82% confidence, while @MoonBoyMax went 0/3 calling it above $0.915–$0.932 at 95–99% confidence [5][8][9][12][13][14].",
+  "blob_id": "S8e2mPcwhoEV8relVj_cQrJpeToaKVK4yELGN3sJKRQ",
+  "at": "2026-11-07T09:24:31.686Z"
+ },
+ {
+  "kind": "pick",
   "text": "[hindsight:pick] Voice \"Uncle Raj\" called SUI ABOVE $0.873 by 2026-11-08 07:45 UTC with 90% confidence (price when called: $0.871). Reasoning: Everyone in the group chat is buying. id=p_d9493dea",
   "blob_id": "z5kyxIoXBFzWbylHmat3qDDeFLrS2IW86jP5yWOPlVw",
   "at": "2026-11-07T07:45:57.992Z"

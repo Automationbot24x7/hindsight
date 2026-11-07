@@ -4,81 +4,167 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hindsight — the pick journal that remembers who was right</title>
+<meta property="og:title" content="Hindsight: the pick journal that remembers who was right">
+<meta property="og:description" content="Market calls scored with live Tatum prices and remembered on Walrus Memory, so you learn whose calls to trust.">
+<meta property="og:image" content="https://automationbot24x7.github.io/hindsight/img/card.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Log market calls from any voice. Hindsight scores them with live Tatum prices and remembers every outcome on Walrus Memory, so it learns who to trust.">
 <link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <div class="brand"><img src="icon.svg" alt="" width="34" height="34"><div><h1>Hindsight</h1><p>The pick journal that remembers who was right.</p></div></div>
-  <div class="memchip" id="memchip" title="Memories stored on Walrus mainnet">
-    <span class="dot"></span><span id="memtext">Memory…</span>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="./"><img src="icon.svg" alt="" width="28" height="28"><span>Hindsight</span></a>
+    <nav class="links">
+      <a href="#how">How it learns</a><a href="#journal-top">Journal</a><a href="#trust">Trust</a><a href="#memory">Memory</a><a href="blog.html">Blog</a>
+    </nav>
+    <div class="status"><span class="memchip" id="tatumchip" title="Prices and Sui mainnet reads via Tatum"><span class="dot"></span>Tatum RPC</span><span class="memchip" id="memchip" title="Memories stored on Walrus mainnet"><span class="dot"></span><span id="memtext">Memory…</span></span></div>
   </div>
 </header>
 
-<section class="ticker" id="ticker"></section>
+<section class="hero">
+  <video class="herovid" autoplay muted loop playsinline preload="auto" poster="img/hero.webp" aria-hidden="true">
+    <source src="media/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="wrap heroin">
+    <div class="herocopy">
+      <p class="eyebrow">Market calls, scored and remembered</p>
+      <h1>Know whose calls<br>to trust.</h1>
+      <p class="lead">Track who called what, and who turned out right. Live <b>Tatum</b> prices score every market call at its deadline. Every call, outcome and lesson is written to <b>Walrus Memory</b> on Sui mainnet, and what the memory recalls decides whom you trust.</p>
+      <div class="cta"><a class="btn" href="#journal-top">Open the journal</a><a class="btn ghost" href="#how">How it learns</a><a class="btn ghost" href="https://github.com/Automationbot24x7/hindsight" target="_blank" rel="noopener">Source code</a></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </div>
+  <a class="scrollcue" href="#how" aria-label="Scroll to how it learns"><span></span></a>
+</section>
 
-<main class="grid">
-  <section class="card" id="logcard">
-    <h2>Log a call</h2>
+<section class="story" id="how">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">How it learns</p>
+      <h2>Every call becomes a memory.<br>Every memory changes what you see.</h2>
+    </div>
+    <ol class="steps4">
+      <li><span class="stepn">01</span><h3>Log a call</h3><p>Who said it, the asset, the target, the deadline and how sure they were.</p><span class="techtag">Tatum Data API · price at call</span></li>
+      <li><span class="stepn">02</span><h3>Score it</h3><p>At the deadline the live price marks it right or wrong, automatically.</p><span class="techtag">Tatum Data API · price at deadline</span></li>
+      <li><span class="stepn">03</span><h3>Remember it</h3><p>Calls, outcomes, lessons and insights are written as plain-English memories.</p><span class="techtag">Walrus Memory · remember() on mainnet</span></li>
+      <li><span class="stepn">04</span><h3>Let memory decide</h3><p>Recalled memory sets trust, weighs the crowd, briefs you and answers questions.</p><span class="techtag">Walrus Memory · recall()</span></li>
+    </ol>
+
+    <div class="feature">
+      <div class="fmedia"><video autoplay muted loop playsinline preload="metadata" poster="img/voices.webp" aria-hidden="true"><source src="media/voices-loop.mp4" type="video/mp4"></video></div>
+      <div class="fcopy">
+        <p class="eyebrow">Trust-weighted consensus</p>
+        <h3>The loudest voice stops winning.</h3>
+        <p>Every voice gets a trust score learned from its scored calls, with confident misses costing the most. The crowd view counts heads; Hindsight weighs them by track record, and flags when memory flips the crowd.</p>
+        <div class="fstat" id="story-cons"></div>
+      </div>
+    </div>
+
+    <div class="feature rev">
+      <div class="fmedia"><video autoplay muted loop playsinline preload="metadata" poster="img/rebuild.webp" aria-hidden="true"><source src="media/rebuild-loop.mp4" type="video/mp4"></video></div>
+      <div class="fcopy">
+        <p class="eyebrow">Portable, verifiable memory</p>
+        <h3>Delete the database. Trust survives.</h3>
+        <p>The local state is only a cache. Every trust score can be rebuilt from Walrus alone, and every memory is a blob on Sui mainnet that anyone can look up. A reflection step reads the memory back and writes new insights to it.</p>
+        <div class="fstat" id="story-mem"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap market" id="journal-top">
+  <div class="apphead">
+    <div><p class="eyebrow">Live journal</p><h2>The journal, running on Walrus mainnet</h2></div>
+    <div class="ticker" id="ticker"></div>
+  </div>
+  <p class="netline" id="netline"></p>
+</section>
+
+<main class="wrap grid">
+  <section class="card span5" id="log">
+    <div class="head"><h2>Log a call</h2></div>
     <form id="pickform" autocomplete="off">
-      <label>Voice <input name="voice" list="voicelist" placeholder="e.g. Me, @analyst, Uncle Raj" required maxlength="40"></label>
+      <label>Who made the call <input name="voice" list="voicelist" placeholder="e.g. Me, @analyst, Uncle Raj" required maxlength="40"></label>
       <datalist id="voicelist"></datalist>
-      <label>Voice's Sui wallet <small>(optional, shows their skin in the game)</small> <input name="suiAddress" placeholder="0x…" maxlength="66" pattern="0x[0-9a-fA-F]{1,64}"></label>
+      <label>Their Sui wallet <span class="opt">optional, shows skin in the game</span><input name="suiAddress" placeholder="0x…" maxlength="66" pattern="0x[0-9a-fA-F]{1,64}"></label>
       <div class="row">
         <label>Asset <select name="asset" id="assetsel"></select></label>
-        <label>Call <select name="direction"><option value="above">closes ABOVE</option><option value="below">closes BELOW</option></select></label>
+        <label>Call <select name="direction"><option value="above">closes above</option><option value="below">closes below</option></select></label>
       </div>
       <div class="row">
-        <label>Target $ <input name="target" type="number" step="any" min="0" required></label>
-        <label>Within <select name="deadlineMinutes">
-          <option value="5">5 min</option><option value="15">15 min</option><option value="60" selected>1 hour</option>
-          <option value="1440">1 day</option><option value="10080">1 week</option></select></label>
+        <label>Target price (USD) <input name="target" type="number" step="any" min="0" required></label>
+        <label>Deadline <select name="deadlineMinutes">
+          <option value="5">in 5 minutes</option><option value="15">in 15 minutes</option><option value="60" selected>in 1 hour</option>
+          <option value="1440">in 1 day</option><option value="10080">in 1 week</option></select></label>
       </div>
-      <label>Confidence <span id="confval">70%</span><input name="confidence" type="range" min="50" max="99" value="70"></label>
-      <label>Why? <input name="note" maxlength="200" placeholder="optional reasoning"></label>
+      <label class="range">Confidence <output id="confval">70%</output><input name="confidence" type="range" min="50" max="99" value="70"></label>
+      <label>Reasoning <span class="opt">optional</span><input name="note" maxlength="200" placeholder="Why do they think so?"></label>
       <div id="brief" class="brief" hidden></div>
-      <button type="submit" id="submitbtn">Log call &amp; remember</button>
+      <button type="submit" class="btn wide" id="submitbtn">Log call and remember</button>
       <p class="hint" id="formhint"></p>
     </form>
   </section>
 
-  <section class="card">
-    <h2>Who to trust <small>learned from outcomes</small></h2>
-    <div id="voices" class="voices"></div>
-    <button class="ghost" id="rebuildbtn" title="Recompute trust using only what Walrus Memory remembers">Rebuild trust from Walrus memory</button>
-    <p class="hint" id="rebuildhint"></p>
+  <section class="card span7" id="trust">
+    <div class="head"><div><h2>Who to trust</h2><span class="sub">Learned from scored outcomes</span></div></div>
+    <div class="lbhead"><span>Voice</span><span>Record</span><span>Calibration</span><span>Trust</span></div>
+    <div id="voices" class="board"></div>
+    <div class="actions">
+      <button class="btn ghost" id="rebuildbtn" title="Recompute every trust score using only what Walrus Memory remembers">Recompute trust from Walrus only</button>
+      <p class="hint" id="rebuildhint"></p>
+    </div>
   </section>
 
-  <section class="card wide">
-    <h2>Consensus <small>raw crowd vs trust-weighted</small></h2>
+  <section class="card span5" id="consensuscard">
+    <div class="head"><div><h2>Market consensus</h2><span class="sub">Open calls, one vote per voice</span></div></div>
     <div id="consensus" class="consensus"></div>
   </section>
 
-  <section class="card wide">
-    <h2>Calls</h2>
+  <section class="card span7" id="journal">
+    <div class="head"><h2>Calls</h2>
+      <div class="tabs" id="picktabs"><button data-f="all" class="on">All</button><button data-f="open">Open</button><button data-f="done">Scored</button></div>
+    </div>
     <div id="picks" class="picks"></div>
+    <button class="more" id="picksmore" hidden></button>
   </section>
 
-  <section class="card">
-    <h2>Lessons learned</h2>
+  <section class="card span7" id="ask">
+    <div class="head"><div><h2>Ask Hindsight</h2><span class="sub">Answers cite memories recalled from Walrus</span></div></div>
+    <form id="askform"><input name="q" placeholder="Who keeps getting SUI wrong?" maxlength="300"><button class="btn">Ask</button></form>
+    <div id="suggest" class="suggest"></div>
+    <div id="answer"></div>
+    <ol id="answers" class="sources"></ol>
+  </section>
+
+  <section class="card span5" id="lessonscard">
+    <div class="head"><h2>Lessons and insights</h2></div>
     <ul id="lessons" class="lessons"></ul>
+    <div class="actions">
+      <button class="btn ghost" id="reflectbtn" title="Read outcomes back from Walrus, find cross-voice patterns, write insights back">Reflect on memory</button>
+      <p class="hint" id="reflecthint"></p>
+    </div>
   </section>
 
-  <section class="card">
-    <h2>Ask Hindsight</h2>
-    <form id="askform"><input name="q" placeholder="Who keeps getting SUI wrong?" maxlength="300"><button>Recall</button></form>
-    <ul id="answers" class="mems"></ul>
-  </section>
-
-  <section class="card wide">
-    <h2>Memory receipts <small>every write is a Walrus blob on mainnet</small></h2>
+  <section class="card span12" id="memory">
+    <div class="head"><div><h2>Memory receipts</h2><span class="sub">Every write is a blob on Walrus mainnet. Verify any of them.</span></div></div>
     <ul id="receipts" class="receipts"></ul>
-    <p class="hint" id="netline"></p>
   </section>
 </main>
 
-<footer>Prices and Sui mainnet data via Tatum · Long-term memory on Walrus · <a href="https://github.com/Automationbot24x7/hindsight" target="_blank" rel="noopener">Source</a></footer>
+<footer class="foot">
+  <div class="wrap footin">
+    <div class="built"><span>Built with</span>
+      <a href="https://tatum.io" target="_blank" rel="noopener" title="Tatum"><img src="img/brand/tatum.svg" alt="Tatum" height="18"></a>
+      <a href="https://www.walrus.xyz" target="_blank" rel="noopener" title="Walrus"><img src="img/brand/walrus.svg" alt="Walrus" height="20"></a>
+    </div>
+    <div class="flinks"><a href="blog.html">How it works</a><a href="receipts.json">All receipts</a><a href="https://github.com/Automationbot24x7/hindsight" target="_blank" rel="noopener">Source (MIT)</a></div>
+  </div>
+</footer>
 <script src="app.js" type="module"></script>
 </body>
 </html>

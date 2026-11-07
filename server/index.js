@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createMemory } from "./memory.js";
 import { createHindsight } from "./hindsight.js";
+import { createAnalyst } from "./analyst.js";
 import { ASSETS, price, suiNetwork, suiBalance } from "./tatum.js";
 
 // Load local keys file if present (never committed).
@@ -29,8 +30,9 @@ const log = (...a) => {
 };
 
 const memory = createMemory(log);
-const hs = createHindsight(memory, log);
-log(`[boot] memory ${memory.live ? "LIVE on Walrus mainnet" : "MOCK (no keys yet)"}, namespace ${memory.namespace}`);
+const analyst = createAnalyst(log);
+const hs = createHindsight(memory, log, analyst);
+log(`[boot] memory ${memory.live ? "LIVE on Walrus mainnet" : "MOCK (no keys yet)"}, namespace ${memory.namespace}; analyst ${analyst.live ? "on" : "off"}`);
 
 setInterval(() => hs.resolveDue(), 15_000);
 
@@ -45,7 +47,7 @@ const readBody = (req) =>
     req.on("end", () => { try { resolve(d ? JSON.parse(d) : {}); } catch (e) { reject(e); } });
   });
 
-const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml", ".png": "image/png", ".ico": "image/x-icon", ".webp": "image/webp" };
+const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml", ".png": "image/png", ".ico": "image/x-icon", ".webp": "image/webp", ".mp4": "video/mp4", ".json": "application/json", ".png": "image/png" };
 
 async function api(req, res, url) {
   const p = url.pathname;
@@ -54,6 +56,7 @@ async function api(req, res, url) {
     const consensus = ASSETS.map((a) => hs.consensus(a)).filter(Boolean);
     return json(res, 200, {
       readonly: READONLY,
+      analyst: analyst.live,
       memory: await memory.stats(),
       receipts: memory.receipts.slice(0, 30),
       voices: hs.voicesView(),
@@ -78,8 +81,13 @@ async function api(req, res, url) {
     return json(res, 200, await hs.briefing(url.searchParams.get("voice") || "", (url.searchParams.get("asset") || "").toUpperCase()));
   }
   if (req.method === "POST" && p === "/api/ask") {
-    const { q } = await readBody(req);
-    return json(res, 200, { q, memories: await memory.recall(String(q || "").slice(0, 300), 8) });
+    const q = String((await readBody(req)).q || "").slice(0, 300);
+    const memories = await memory.recall(q, 8);
+    let answer = null;
+    if (analyst.live && memories.length) {
+      try { answer = await analyst.answer(q, memories); } catch (e) { log(`[analyst] answer failed: ${e.message}`); }
+    }
+    return json(res, 200, { q, memories, answer });
   }
   if (req.method === "GET" && p === "/api/logs") return json(res, 200, logs.slice(0, 80));
   if (req.method === "GET" && p === "/healthz") return json(res, 200, { ok: true });
@@ -87,6 +95,7 @@ async function api(req, res, url) {
   if (READONLY && req.method === "POST") return json(res, 403, { error: "This public demo is read-only. Run it locally to log picks." });
   if (req.method === "POST" && p === "/api/voices") return json(res, 200, hs.addVoice(await readBody(req)));
   if (req.method === "POST" && p === "/api/picks") return json(res, 200, await hs.addPick(await readBody(req)));
+  if (req.method === "POST" && p === "/api/reflect") return json(res, 200, await hs.reflect());
   if (req.method === "POST" && p === "/api/rebuild") return json(res, 200, await hs.rebuildFromMemory());
   return json(res, 404, { error: "not found" });
 }

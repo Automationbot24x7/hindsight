@@ -1,0 +1,54 @@
+{
+  "voice": "Charon",
+  "style": "a calm, confident product-demo narrator, clear and friendly, unhurried, slight warmth",
+  "lines": [
+    {
+      "id": "s1",
+      "text": "Everyone listens to someone about markets. An analyst, a loud account, a friend in a group chat, their own gut. They all sound sure. Nobody keeps score. Hindsight does."
+    },
+    {
+      "id": "s2",
+      "text": "Hindsight is a pick journal with a long-term memory. Tatum prices and scores every call. Walrus Memory, on Sui mainnet, remembers every call, outcome and lesson. And what it remembers decides whom you should trust."
+    },
+    {
+      "id": "s3",
+      "text": "Here is a tip from Uncle Raj: ETH closes higher within a week, eighty percent sure. Hindsight prices it through Tatum the moment it is logged, and writes it to Walrus."
+    },
+    {
+      "id": "s4",
+      "text": "When a deadline passes, Tatum's live price marks the call right or wrong. Every result becomes a plain-English memory on Walrus, and every write leaves a receipt with its blob ID on mainnet."
+    },
+    {
+      "id": "s5",
+      "text": "From those outcomes, Hindsight learns a trust score for each voice. The careful analyst climbs. The loud bull who is always ninety-nine percent sure sinks to four percent, because confident misses cost the most."
+    },
+    {
+      "id": "s6",
+      "text": "Before you log the next call, Hindsight recalls that voice's history from Walrus, and the memory analyst gives a one-line verdict. Here: give this voice very little weight on SUI."
+    },
+    {
+      "id": "s7",
+      "text": "The crowd leans bullish on SUI. Weighted by what memory knows about each voice, the view flips to bearish, and Hindsight flags it."
+    },
+    {
+      "id": "s8",
+      "text": "Patterns become lessons: losing streaks, weak assets, overconfidence. Then Hindsight reflects. It reads its own memories back from Walrus, finds patterns across voices, and writes new insights back to memory."
+    },
+    {
+      "id": "s9",
+      "text": "Ask in plain words, like: who keeps getting SUI wrong? The answer comes only from memories recalled from Walrus, and every claim links to its source."
+    },
+    {
+      "id": "s10",
+      "text": "Delete the local database, and trust can be rebuilt from Walrus alone. The memory is portable. Voices can even link a Sui wallet, read through Tatum's Sui gateway, to show their skin in the game."
+    },
+    {
+      "id": "s11",
+      "text": "Under the hood: Tatum's Data API and Sui RPC for prices and on-chain reads, Walrus Memory for everything Hindsight learns, and an analyst that only speaks from what memory recalls."
+    },
+    {
+      "id": "s12",
+      "text": "Hindsight. The pick journal that remembers who was right. Open source, built on Tatum and Walrus."
+    }
+  ]
+}

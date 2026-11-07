@@ -29,13 +29,21 @@ for (const q of ["outcome RIGHT WRONG record trust", "lesson pattern streak over
 }
 for (const r of state.receipts) if (!seen.has(r.blob_id)) seen.set(r.blob_id, { text: r.text, blob_id: r.blob_id });
 
+// Recorded analyst answers for the suggested questions, so the static demo can show them.
+const SUGGEST = ["Who keeps getting SUI wrong?", "Whose high-confidence calls can I trust?", "What did Hindsight learn about overconfidence?", "How has Priya done on BTC and ETH?"];
+const answers = {};
+for (const q of SUGGEST) {
+  const r = await post("/api/ask", { q });
+  if (r.answer) answers[q.toLowerCase()] = { answer: r.answer, memories: r.memories };
+}
+
 const receiptsAll = JSON.parse(fs.readFileSync("data/receipts.json", "utf8"));
 state.receipts = receiptsAll.slice(0, 60);
 state.memory.memory_count = Math.max(state.memory.memory_count, receiptsAll.length);
 state.memory.pending = 0;
 
 fs.mkdirSync(OUT, { recursive: true });
-for (const f of fs.readdirSync("public")) fs.copyFileSync(path.join("public", f), path.join(OUT, f));
+fs.cpSync("public", OUT, { recursive: true });
 // Fill the blog's "how it learned" section with the real numbers from this run.
 const HABITS = {
   "Priya (desk analyst)": "Careful analyst, modest targets, honest confidence",
@@ -53,7 +61,7 @@ const quotes = state.lessons.slice().reverse().map((l) => `<blockquote>${escH(l.
 const blog = fs.readFileSync(path.join(OUT, "blog.html"), "utf8").replace("<!--LEARNED_ROWS-->", rows).replace("<!--LESSON_QUOTES-->", quotes);
 fs.writeFileSync(path.join(OUT, "blog.html"), blog);
 
-fs.writeFileSync(path.join(OUT, "snapshot.json"), JSON.stringify({ takenAt: new Date().toISOString(), state, prices, network, skin, briefings, memories: [...seen.values()] }));
+fs.writeFileSync(path.join(OUT, "snapshot.json"), JSON.stringify({ takenAt: new Date().toISOString(), state, prices, network, skin, briefings, answers, memories: [...seen.values()] }));
 fs.writeFileSync(path.join(OUT, "receipts.json"), JSON.stringify(receiptsAll, null, 1));
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 console.log(`snapshot: ${state.voices.length} voices, ${state.picks.length} calls, ${receiptsAll.length} receipts, ${seen.size} memory texts`);

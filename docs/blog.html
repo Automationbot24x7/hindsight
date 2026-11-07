@@ -4,15 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Building Hindsight</title>
+<meta property="og:title" content="Building Hindsight: a pick journal that remembers who was right">
+<meta property="og:image" content="https://automationbot24x7.github.io/hindsight/img/card.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="How Hindsight uses Tatum and Walrus Memory to learn which market voices to trust.">
 <link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0d1117;--panel:#151b24;--line:#263042;--text:#e8edf4;--muted:#93a1b5;--accent:#6ee7c7;--accent2:#7aa7ff}
 @media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--panel:#fff;--line:#dde3ec;--text:#16202e;--muted:#5d6b80;--accent:#0f9f7f;--accent2:#2f63d6}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 Georgia,"Iowan Old Style",serif}
+body{margin:0;background:var(--bg);color:var(--text);font:18px/1.7 "Source Serif 4",Georgia,serif}
 main{max-width:760px;margin:0 auto;padding:40px 16px 80px}
-h1,h2,h3,.meta,nav,figcaption,table{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3,.meta,nav,figcaption,table{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1{letter-spacing:-.025em;font-weight:800}h2{letter-spacing:-.015em}
 h1{font-size:38px;line-height:1.15;margin:8px 0 6px}
 h2{font-size:24px;margin:42px 0 8px}
 .meta{color:var(--muted);font-size:14px}
@@ -21,6 +28,9 @@ nav{font-size:14px;margin-bottom:24px}
 code{font-family:ui-monospace,Consolas,monospace;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:1px 6px;overflow-wrap:anywhere}
 pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:14px;line-height:1.5}
 pre code{border:0;padding:0;background:none}
+.cover{width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:14px;border:1px solid var(--line);display:block;margin:6px 0 18px}
+figure{margin:20px 0}
+figure img{width:100%;border-radius:12px;display:block}
 video{width:100%;border-radius:12px;border:1px solid var(--line);background:#000}
 figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 blockquote{margin:16px 0;padding:10px 16px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 10px 10px 0}
@@ -36,10 +46,11 @@ th{color:var(--muted);font-weight:600}
 <p class="meta">Total Recall hackathon · Tatum x Walrus · Track 01: Markets &amp; Sports Prediction</p>
 <h1>Building Hindsight: a pick journal that remembers who was right</h1>
 <p class="meta">November 2026</p>
+<img class="cover" src="img/hero.webp" alt="An open journal whose price lines turn into glowing memory blocks">
 
 <figure>
 <video controls preload="metadata" src="hindsight-demo.mp4"></video>
-<figcaption>Demo video, about 98 seconds.</figcaption>
+<figcaption>Demo video, about two and a half minutes.</figcaption>
 </figure>
 
 <h2>The problem: nobody keeps score</h2>
@@ -56,7 +67,13 @@ th{color:var(--muted);font-weight:600}
 <li><b>Lessons.</b> When a pattern appears (a losing streak, a weak asset, overconfidence, poor calibration), Hindsight writes it down as a lesson.</li>
 <li><b>Ask Hindsight.</b> Plain-language recall over everything it has learned.</li>
 <li><b>Skin in the game.</b> A voice can link a Sui wallet; Hindsight shows its on-chain SUI balance next to their record.</li>
+<li><b>Memory analyst.</b> Plain-language answers, a one-line verdict before each call, and reflections that write new insights back to Walrus, all built only from what Walrus recalls.</li>
 </ul>
+
+<figure>
+<img src="img/architecture.svg" alt="Diagram: a call is priced by Tatum, written to Walrus Memory, and recalled memory drives trust, consensus, briefings, lessons and the memory analyst, whose insights are written back to Walrus.">
+<figcaption>How the pieces fit: Tatum scores, Walrus remembers, recalled memory changes what you see.</figcaption>
+</figure>
 
 <h2>How it uses Walrus Memory</h2>
 <p>Walrus Memory is the long-term brain. Every event becomes a plain-English memory written to Sui mainnet through the managed relayer with the <code>@mysten-incubation/memwal</code> SDK, in the namespace <code>hindsight</code>:</p>
@@ -70,6 +87,17 @@ th{color:var(--muted);font-weight:600}
 <li><b>Ask Hindsight:</b> free-text questions go straight to <code>recall()</code>.</li>
 <li><b>Rebuild trust from Walrus:</b> the strongest test of the design. Hindsight recalls the outcome memories, parses them and recomputes every voice's trust <em>without touching its local database</em>. The local state is a cache; the memory on Walrus is the source of truth, and it is portable to any other app holding the key.</li>
 </ol>
+<h2>The memory analyst: answers that cite Walrus</h2>
+<p>Recall returns raw memories. To turn them into something a person can act on, Hindsight adds a small analyst that sees <em>only</em> the memories recalled from Walrus for that request, numbered, and must cite them. Three things use it:</p>
+<ul>
+<li><b>Ask Hindsight</b> answers in plain language with numbered citations; each number links to the recalled memory (and its blob ID) underneath.</li>
+<li><b>Pre-call verdict.</b> When you type a voice and an asset, the briefing opens with one line such as "Give it little weight: 0/3 on SUI and missed calls made at 99% and 97% confidence."</li>
+<li><b>Reflection.</b> Every few outcomes (or on demand) Hindsight reads outcome and lesson memories back from Walrus, looks for patterns across voices, assets and confidence levels, and writes up to three new <code>[hindsight:insight]</code> memories. Those insights are recalled in later briefings and answers, so the memory improves itself.</li>
+</ul>
+<p>The analyst never sees the local database, only recalled memories, so every claim it makes can be traced to a blob on Walrus mainnet. Without an API key the app still works; Ask simply lists the recalled memories.</p>
+
+<p>Every memory is a real blob on Walrus mainnet. Each receipt in the app links to Walruscan, which shows the blob's size, its Sui object, the certification transaction and the SEAL encryption step that Walrus Memory applies before storing it.</p>
+
 <p>Writes go through a paced queue (about one every 13 seconds) because the relayer limits each delegate key to a few remember calls per minute. Rate-limit responses are retried, and every successful write is kept as a receipt with its Walrus <b>blob ID</b>, shown in the app.</p>
 
 <h2>How it uses Tatum</h2>
@@ -90,18 +118,22 @@ th{color:var(--muted);font-weight:600}
 <tr><td>Me</td><td>Gut feelings</td><td class="num">0/2 right</td><td class="num">32%</td></tr>
 <tr><td>@MoonBoyMax</td><td>Loud and always bullish, always 90%+ sure</td><td class="num">0/5 right</td><td class="num">4%</td></tr>
 </table>
-<p>Within minutes the memory had told a story no single call could:</p>
+<p>Within minutes the memory had told a story no single call could. These are the lessons and reflections it wrote back to Walrus:</p>
 <blockquote>Voice &quot;@MoonBoyMax&quot; missed a 92%-confidence SOL call. Their high-conviction calls may be overconfident.</blockquote>
 <blockquote>Voice &quot;@MoonBoyMax&quot; has been wrong 3 times in a row. Fade or ignore their next call until they recover.</blockquote>
 <blockquote>Voice &quot;@MoonBoyMax&quot; is poorly calibrated: confidence does not match results. Treat their confidence numbers with caution.</blockquote>
 <blockquote>Voice &quot;@MoonBoyMax&quot; is weak on SUI: only 0/3 right. Discount their SUI calls.</blockquote>
 <blockquote>Voice &quot;@OnchainOtter&quot; is on a 3-call hot streak. Their next call deserves extra weight.</blockquote>
 <blockquote>Voice &quot;@OnchainOtter&quot; reads SUI well: 3/3 right. Trust their SUI calls.</blockquote>
+<blockquote>On SUI, which closed at $0.871, @OnchainOtter went 3/3 at 78–82% confidence, while @MoonBoyMax went 0/3 calling it above $0.915–$0.932 at 95–99% confidence.</blockquote>
+<blockquote>Priya (desk analyst) was right 3 of 4 times at 60–75% confidence, missing only her lowest-confidence call (SOL, 60%), while @MoonBoyMax went 0/5 at 90–99%.</blockquote>
+<blockquote>&quot;Me&quot; took the opposite side of Priya on both BTC and ETH and lost both, missing narrowly: BTC closed $75980 versus $75911, ETH $2243 versus $2246.</blockquote>
 <p>Then the consensus panel changed. On the open SUI calls the crowd was split or leaning bullish, while the trust-weighted view, built from what Walrus remembered, leaned clearly bearish, so Hindsight flagged that <b>memory flips the crowd's view</b>.</p>
 <p>Finally, <b>Rebuild trust from Walrus</b> recovered every outcome from memory alone and reproduced the same ranking. Every number in that table can be rebuilt from blobs on Walrus mainnet.</p>
 
 <h2>The trust formula</h2>
 <p>Trust = 0.7 × Bayesian hit rate (one imaginary hit and one imaginary miss as a prior) + 0.4 × (calibration − 0.25), where calibration is 1 − Brier score. A voice that is right 60% of the time at honest 60% confidence beats one that is right 60% of the time while claiming 95%.</p>
+<p>Consensus counts one vote per voice (their latest open call on that asset). The crowd view is a plain headcount; the weighted view multiplies each vote by trust × stated confidence × evidence, where evidence = (n + 1) / (n + 3) for n scored calls, so a voice with no record cannot outweigh one with a proven record.</p>
 
 <h2>Try it</h2>
 <pre><code>git clone https://github.com/Automationbot24x7/hindsight && cd hindsight

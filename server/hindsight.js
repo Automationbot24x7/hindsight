@@ -11,7 +11,7 @@ const fmtUsd = (v) => (v >= 100 ? v.toFixed(0) : v >= 1 ? v.toFixed(3) : v.toPre
 const fmtTime = (iso) => iso.replace("T", " ").slice(0, 16) + " UTC";
 const pct = (x) => Math.round(x * 100);
 
-export function createHindsight(memory, log = console.log) {
+export function createHindsight(memory, log = console.log, analyst = null) {
   let state = { voices: {}, picks: [], lessons: [] };
   try {
     state = JSON.parse(fs.readFileSync(STATE_FILE, "utf8"));
@@ -57,16 +57,23 @@ export function createHindsight(memory, log = console.log) {
       .sort((a, b) => b.trust - a.trust);
   }
 
-  // Trust-weighted consensus on an asset from all open picks.
+  // Consensus on an asset from open picks: one vote per voice (their latest open call).
+  // The crowd view counts every voice equally; the weighted view multiplies each vote by
+  // trust, by the stated confidence, and by how much evidence backs that trust, so a voice
+  // with no scored calls cannot outweigh one with a proven record.
   function consensus(asset) {
-    const open = state.picks.filter((p) => p.asset === asset && p.status === "open");
+    const latest = new Map();
+    for (const p of state.picks) if (p.asset === asset && p.status === "open" && !latest.has(p.voice)) latest.set(p.voice, p);
+    const open = [...latest.values()];
     if (!open.length) return null;
     let up = 0, down = 0, rawUp = 0;
     for (const p of open) {
-      const w = voiceStats(p.voice).trust * (p.confidence / 100);
+      const s = voiceStats(p.voice);
+      const evidence = (s.n + 1) / (s.n + 3); // 1/3 with no record, approaching 1 with more scored calls
+      const w = s.trust * (p.confidence / 100) * evidence;
       if (p.direction === "above") { up += w; rawUp++; } else down += w;
     }
-    return { asset, picks: open.length, rawBullish: rawUp / open.length, weightedBullish: up / (up + down || 1) };
+    return { asset, voices: open.length, picks: state.picks.filter((p) => p.asset === asset && p.status === "open").length, rawBullish: rawUp / open.length, weightedBullish: up / (up + down || 1) };
   }
 
   // ---------- memory text ----------
@@ -107,7 +114,11 @@ export function createHindsight(memory, log = console.log) {
     const q = `What happened before when voice "${voice}" called ${asset}? track record, lessons`;
     const memories = (await memory.recall(q, 6)).filter((m) => m.text.includes(`"${voice}"`) || m.text.includes(asset));
     const s = state.voices[voice] ? voiceStats(voice) : null;
-    return { voice, asset, stats: s, memories };
+    let verdict = null;
+    if (analyst?.live && (memories.length || s?.n)) {
+      try { verdict = await analyst.verdict(voice, asset, s, memories); } catch (e) { log(`[analyst] verdict failed: ${e.message}`); }
+    }
+    return { voice, asset, stats: s, memories, verdict };
   }
 
   async function addPick(input) {
@@ -155,9 +166,48 @@ export function createHindsight(memory, log = console.log) {
         }
         save();
         log(`[hindsight] resolved ${p.id} ${p.voice} ${p.asset} -> ${p.status}`);
+        sinceReflect++;
       } catch (err) {
         log(`[hindsight] resolve ${p.id} failed: ${err.message}`);
       }
+    }
+    // Every few outcomes, the analyst reads the memory back and writes new insights to it.
+    if (sinceReflect >= 4 && analyst?.live && !reflecting) reflect().catch((e) => log(`[analyst] reflect failed: ${e.message}`));
+  }
+
+  // ---------- reflection: memory reads itself and writes insights back ----------
+  let sinceReflect = 0, reflecting = false;
+  async function reflect() {
+    if (!analyst?.live) throw new Error("Reflection needs the analyst (set an API key).");
+    if (reflecting) throw new Error("A reflection is already running.");
+    reflecting = true;
+    try {
+      const seen = new Map();
+      for (const q of ["outcome RIGHT WRONG record trust confidence", "lesson pattern streak overconfident weak strong"]) {
+        for (const m of await memory.recall(q, 40)) if (/\[hindsight:(outcome|lesson)\]/.test(m.text)) seen.set(m.blob_id, m);
+      }
+      const mems = [...seen.values()].slice(0, 60);
+      if (mems.length < 4) throw new Error("Not enough outcomes in memory to reflect on yet.");
+      const known = state.lessons.filter((l) => l.kind === "insight").map((l) => l.text);
+      const { insights } = await analyst.reflect(mems, known);
+      const added = [];
+      for (const ins of (insights || []).slice(0, 3)) {
+        const text = String(ins.text || "").replace(/\s*\[\d+\]/g, "").trim();
+        if (!text) continue;
+        const key = "insight:" + crypto.createHash("sha1").update(text.toLowerCase()).digest("hex").slice(0, 10);
+        if (state.lessons.some((l) => l.key === key)) continue;
+        const cites = (ins.cited || []).map((n) => mems[n - 1]?.blob_id).filter(Boolean);
+        const l = { key, kind: "insight", text, cites, at: new Date().toISOString() };
+        state.lessons.unshift(l);
+        added.push(l);
+        memory.remember("insight", `[hindsight:insight] ${text}`);
+      }
+      sinceReflect = 0;
+      save();
+      log(`[analyst] reflection read ${mems.length} memories, wrote ${added.length} insights`);
+      return { memoriesRead: mems.length, insights: added };
+    } finally {
+      reflecting = false;
     }
   }
 
@@ -192,6 +242,6 @@ export function createHindsight(memory, log = console.log) {
 
   return {
     state: () => state,
-    voicesView, consensus, addVoice, addPick, briefing, resolveDue, rebuildFromMemory, voiceStats,
+    voicesView, consensus, addVoice, addPick, briefing, resolveDue, rebuildFromMemory, voiceStats, reflect,
   };
 }

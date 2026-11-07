@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+  <title>How Hindsight works: Tatum scores calls, Walrus Memory remembers them, and recalled memory drives trust, briefings and answers.</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#93a1b5"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6ee7c7"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7aa7ff"/></marker>
+  </defs>
+  <rect width="1200" height="640" rx="18" fill="#0d1117"/>
+  <text x="40" y="52" fill="#e8edf4" font-size="24" font-weight="700">How Hindsight learns whom to trust</text>
+  <text x="40" y="80" fill="#93a1b5" font-size="15">Tatum scores every call. Walrus Memory remembers it. What memory recalls changes what you see.</text>
+
+  <!-- You -->
+  <rect x="40" y="130" width="230" height="150" rx="14" fill="#151b24" stroke="#263042"/>
+  <text x="60" y="162" fill="#e8edf4" font-size="17" font-weight="700">1. Log a call</text>
+  <text x="60" y="190" fill="#93a1b5" font-size="14">who said it, asset, target,</text>
+  <text x="60" y="210" fill="#93a1b5" font-size="14">deadline, confidence</text>
+  <text x="60" y="246" fill="#e8edf4" font-size="13">"SUI above $0.93 within</text>
+  <text x="60" y="264" fill="#e8edf4" font-size="13">an hour, 95% sure"</text>
+
+  <!-- Server -->
+  <rect x="340" y="130" width="300" height="370" rx="14" fill="#151b24" stroke="#6ee7c7" stroke-opacity=".6"/>
+  <text x="362" y="162" fill="#6ee7c7" font-size="17" font-weight="700">Hindsight</text>
+  <text x="362" y="184" fill="#93a1b5" font-size="13">Node server + web app</text>
+  <g font-size="14" fill="#e8edf4">
+    <rect x="362" y="200" width="256" height="50" rx="9" fill="#1b2330"/>
+    <text x="376" y="222">2. Score at the deadline</text><text x="376" y="240" fill="#93a1b5" font-size="12">right or wrong vs. live price</text>
+    <rect x="362" y="260" width="256" height="50" rx="9" fill="#1b2330"/>
+    <text x="376" y="282">Trust per voice</text><text x="376" y="300" fill="#93a1b5" font-size="12">hit rate + calibration</text>
+    <rect x="362" y="320" width="256" height="50" rx="9" fill="#1b2330"/>
+    <text x="376" y="342">Trust-weighted consensus</text><text x="376" y="360" fill="#93a1b5" font-size="12">flags when memory flips the crowd</text>
+    <rect x="362" y="380" width="256" height="50" rx="9" fill="#1b2330"/>
+    <text x="376" y="402">Lessons from patterns</text><text x="376" y="420" fill="#93a1b5" font-size="12">streaks, weak assets, overconfidence</text>
+    <rect x="362" y="440" width="256" height="44" rx="9" fill="#1b2330"/>
+    <text x="376" y="467">Rebuild trust from Walrus alone</text>
+  </g>
+
+  <!-- Tatum -->
+  <rect x="720" y="110" width="440" height="160" rx="14" fill="#151b24" stroke="#7aa7ff" stroke-opacity=".7"/>
+  <text x="742" y="142" fill="#7aa7ff" font-size="17" font-weight="700">Tatum</text>
+  <text x="742" y="172" fill="#e8edf4" font-size="14">Data API · exchange rates</text>
+  <text x="742" y="192" fill="#93a1b5" font-size="12.5">price when a call is logged and when it resolves (SUI, BTC, ETH, SOL)</text>
+  <text x="742" y="224" fill="#e8edf4" font-size="14">Sui mainnet RPC gateway · GraphQL</text>
+  <text x="742" y="244" fill="#93a1b5" font-size="12.5">a voice's SUI wallet balance, epoch, checkpoint, gas price</text>
+
+  <!-- Walrus -->
+  <rect x="720" y="320" width="440" height="180" rx="14" fill="#151b24" stroke="#6ee7c7" stroke-opacity=".8"/>
+  <text x="742" y="352" fill="#6ee7c7" font-size="17" font-weight="700">Walrus Memory · Sui mainnet</text>
+  <text x="742" y="382" fill="#e8edf4" font-size="14">remember()  →  blob per memory</text>
+  <text x="742" y="402" fill="#93a1b5" font-size="12.5">[pick] [outcome] [lesson] [insight] [voice], plain sentences</text>
+  <text x="742" y="434" fill="#e8edf4" font-size="14">recall()  →  semantic search</text>
+  <text x="742" y="454" fill="#93a1b5" font-size="12.5">briefings, Ask Hindsight, reflection, rebuild</text>
+  <text x="742" y="484" fill="#93a1b5" font-size="12.5">every write kept as a receipt with its blob ID</text>
+
+  <!-- Analyst -->
+  <rect x="340" y="540" width="820" height="72" rx="14" fill="#151b24" stroke="#ffcf5a" stroke-opacity=".7"/>
+  <text x="362" y="570" fill="#ffcf5a" font-size="16" font-weight="700">Memory analyst</text>
+  <text x="362" y="594" fill="#93a1b5" font-size="13">reads only memories recalled from Walrus → cited answers, pre-call verdicts, and new insights written back to memory</text>
+
+  <!-- UI outcome -->
+  <rect x="40" y="330" width="230" height="170" rx="14" fill="#151b24" stroke="#263042"/>
+  <text x="60" y="362" fill="#e8edf4" font-size="17" font-weight="700">What you see</text>
+  <text x="60" y="390" fill="#93a1b5" font-size="14">• trust scores</text>
+  <text x="60" y="412" fill="#93a1b5" font-size="14">• briefing before a call</text>
+  <text x="60" y="434" fill="#93a1b5" font-size="14">• weighted consensus</text>
+  <text x="60" y="456" fill="#93a1b5" font-size="14">• lessons and insights</text>
+  <text x="60" y="478" fill="#93a1b5" font-size="14">• cited answers</text>
+
+  <!-- arrows -->
+  <path d="M270 205H332" stroke="#93a1b5" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <path d="M640 205C680 205 680 190 712 190" stroke="#7aa7ff" stroke-width="2" fill="none" marker-end="url(#b)"/>
+  <text x="652" y="178" fill="#7aa7ff" font-size="12">price</text>
+  <path d="M640 330C680 330 680 380 712 380" stroke="#6ee7c7" stroke-width="2" fill="none" marker-end="url(#g)"/>
+  <text x="648" y="318" fill="#6ee7c7" font-size="12">remember</text>
+  <path d="M712 440C680 440 676 455 648 455" stroke="#6ee7c7" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#g)"/>
+  <text x="652" y="478" fill="#6ee7c7" font-size="12">recall</text>
+  <path d="M940 500V532" stroke="#6ee7c7" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#g)"/>
+  <path d="M1000 532V508" stroke="#ffcf5a" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <text x="1010" y="524" fill="#ffcf5a" font-size="12">insights</text>
+  <path d="M332 415H278" stroke="#93a1b5" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <path d="M340 576H155V508" stroke="#ffcf5a" stroke-width="2" fill="none" marker-end="url(#a)" stroke-opacity=".8"/>
+</svg>
