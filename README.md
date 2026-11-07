@@ -8,6 +8,11 @@ You log a call ("SUI closes above $0.90 within an hour, 80% sure"), Hindsight sc
 
 > Total Recall hackathon (Tatum x Walrus), **Track 01: Markets & Sports Prediction**.
 
+- **Demo video:** https://automationbot24x7.github.io/hindsight/hindsight-demo.mp4
+- **Blog post:** https://automationbot24x7.github.io/hindsight/blog.html
+- **Hosted demo (read-only snapshot of the live journal):** https://automationbot24x7.github.io/hindsight/
+- **All Walrus write receipts (blob IDs):** [docs/receipts.json](docs/receipts.json)
+
 ## What memory changes in the product
 
 | Without memory | With Walrus Memory |
