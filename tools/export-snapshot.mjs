@@ -36,6 +36,23 @@ state.memory.pending = 0;
 
 fs.mkdirSync(OUT, { recursive: true });
 for (const f of fs.readdirSync("public")) fs.copyFileSync(path.join("public", f), path.join(OUT, f));
+// Fill the blog's "how it learned" section with the real numbers from this run.
+const HABITS = {
+  "Priya (desk analyst)": "Careful analyst, modest targets, honest confidence",
+  "@MoonBoyMax": "Loud and always bullish, always 90%+ sure",
+  "@OnchainOtter": "Active Sui wallet, reads SUI flows",
+  "Me": "Gut feelings",
+  "Uncle Raj": "Group-chat tips",
+};
+const escH = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const rows = state.voices
+  .filter((v) => v.n > 0)
+  .map((v) => `<tr><td>${escH(v.name)}</td><td>${escH(HABITS[v.name] || "")}</td><td class="num">${v.hits}/${v.n} right</td><td class="num">${Math.round(v.trust * 100)}%</td></tr>`)
+  .join("\n");
+const quotes = state.lessons.slice().reverse().map((l) => `<blockquote>${escH(l.text)}</blockquote>`).join("\n");
+const blog = fs.readFileSync(path.join(OUT, "blog.html"), "utf8").replace("<!--LEARNED_ROWS-->", rows).replace("<!--LESSON_QUOTES-->", quotes);
+fs.writeFileSync(path.join(OUT, "blog.html"), blog);
+
 fs.writeFileSync(path.join(OUT, "snapshot.json"), JSON.stringify({ takenAt: new Date().toISOString(), state, prices, network, skin, briefings, memories: [...seen.values()] }));
 fs.writeFileSync(path.join(OUT, "receipts.json"), JSON.stringify(receiptsAll, null, 1));
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");

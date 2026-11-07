@@ -2,3 +2,4 @@ node_modules/
 Credentials/
 .env
 data/
+video/

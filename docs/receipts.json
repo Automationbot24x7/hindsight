@@ -1,0 +1,320 @@
+[
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Uncle Raj\" called SUI ABOVE $0.873 by 2026-11-08 07:45 UTC with 90% confidence (price when called: $0.871). Reasoning: Everyone in the group chat is buying. id=p_d9493dea",
+  "blob_id": "z5kyxIoXBFzWbylHmat3qDDeFLrS2IW86jP5yWOPlVw",
+  "at": "2026-11-07T07:45:57.992Z"
+ },
+ {
+  "kind": "voice",
+  "text": "[hindsight:voice] New voice \"Uncle Raj\" is being tracked. Starting trust 50%.",
+  "blob_id": "f4kWtqC9PMLSiuWy50_E4g9LEXy_mVsXtkO_Ada70qw",
+  "at": "2026-11-07T07:45:39.580Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@OnchainOtter\" reads SUI well: 3/3 right. Trust their SUI calls.",
+  "blob_id": "MvO-6cvWmA6JxDGf7KVs4EDeIGhXz1tFcOCH__mdJ8w",
+  "at": "2026-11-07T07:44:28.084Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@OnchainOtter\" is on a 3-call hot streak. Their next call deserves extra weight.",
+  "blob_id": "Xa64lUZnxLhctThGiiyNjT9ImaBDzEd7I-arLKdOis4",
+  "at": "2026-11-07T07:44:11.048Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@OnchainOtter\" was RIGHT on SUI BELOW $0.888 at 82% confidence (closed at $0.871). Record now 3/3 right, trust 84%. id=p_4c212331",
+  "blob_id": "n3hCqKQk5bwiqx7kZFoeEvMDuuAKNHWQl2jxyxGaYA8",
+  "at": "2026-11-07T07:43:51.281Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" missed a 99%-confidence SUI call. Their high-conviction calls may be overconfident.",
+  "blob_id": "lR3LAZ8dpqL5CU9kdwNeD2p9jQAORMy49fr4-8RMZKg",
+  "at": "2026-11-07T07:43:32.222Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" is weak on SUI: only 0/3 right. Discount their SUI calls.",
+  "blob_id": "n1nQ_CdUN2AOXko6wJELDPuGUAmy2Pz3DXrhX_5cL3A",
+  "at": "2026-11-07T07:43:12.476Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" has been wrong 5 times in a row. Fade or ignore their next call until they recover.",
+  "blob_id": "t0EXDGB2aBMTr03HjGcJEuz8Mzm3e0F46wL4UNOIq_o",
+  "at": "2026-11-07T07:42:53.869Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@MoonBoyMax\" was WRONG on SUI ABOVE $0.932 at 99% confidence (closed at $0.871). Record now 0/5 right, trust 4%. id=p_307edd64",
+  "blob_id": "_75MJF5Q5aqg1DfjMBN-dTnvgzz5I5fW-8S4sPJUjsM",
+  "at": "2026-11-07T07:42:34.412Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"Me\" was WRONG on BTC BELOW $75911 at 60% confidence (closed at $75980). Record now 0/2 right, trust 32%. id=p_30dd5558",
+  "blob_id": "S5yUKZ4J36FlyFUsDZm9O8h2vgP4YBX8OxH2k5buRqs",
+  "at": "2026-11-07T07:42:15.809Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" is poorly calibrated: confidence does not match results. Treat their confidence numbers with caution.",
+  "blob_id": "AB6iNczq1XYe2zyejo4TirLa47NpnXYVdQNhiej_8Ss",
+  "at": "2026-11-07T07:41:56.803Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" missed a 90%-confidence BTC call. Their high-conviction calls may be overconfident.",
+  "blob_id": "9jHZpxklrCsi0Ecan5bpHMCl0UOyDmOFHZ-S14g2dxw",
+  "at": "2026-11-07T07:41:37.165Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" has been wrong 4 times in a row. Fade or ignore their next call until they recover.",
+  "blob_id": "M226ZCCJub0_UdmTjDYE9PhJN0PPwu6PZueyPijZUN0",
+  "at": "2026-11-07T07:41:17.353Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@MoonBoyMax\" was WRONG on BTC ABOVE $77886 at 90% confidence (closed at $75980). Record now 0/4 right, trust 7%. id=p_840e1a1a",
+  "blob_id": "55CyNI_sw4Yv9LR77fcN5zxSrTw6kZSmqQpzhcXArDI",
+  "at": "2026-11-07T07:40:59.491Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"Priya (desk analyst)\" was RIGHT on SUI BELOW $0.880 at 72% confidence (closed at $0.871). Record now 3/4 right, trust 71%. id=p_4ba45794",
+  "blob_id": "awuhUcu1_mTOaVUXnf5fynFa1gOU9COrv5iIVzTVYJ4",
+  "at": "2026-11-07T07:40:41.320Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@OnchainOtter\" was RIGHT on SUI ABOVE $0.858 at 78% confidence (closed at $0.871). Record now 2/2 right, trust 81%. id=p_adf12094",
+  "blob_id": "6u8ScDBMEOkJMYNm8sppH7uH3QyUGUuI7pLpLMcH8bA",
+  "at": "2026-11-07T07:40:22.127Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" missed a 97%-confidence SUI call. Their high-conviction calls may be overconfident.",
+  "blob_id": "UF1Q7G6Ho1e7NZHXWWfloW1CfnHFod49fbN5tzUWQqQ",
+  "at": "2026-11-07T07:40:02.288Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" has been wrong 3 times in a row. Fade or ignore their next call until they recover.",
+  "blob_id": "Zeo-cQ5lnR6BmFWQlWHrlqS6EWzusDX0KnzXjLgsB4c",
+  "at": "2026-11-07T07:39:37.558Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@MoonBoyMax\" was WRONG on SUI ABOVE $0.923 at 97% confidence (closed at $0.871). Record now 0/3 right, trust 8%. id=p_328e3aad",
+  "blob_id": "B4ITqPmqe6ynW39_TlpKmNzV6SVCZlgXHxWoGTFq3YE",
+  "at": "2026-11-07T07:39:18.099Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"Priya (desk analyst)\" was WRONG on SOL ABOVE $91.247 at 60% confidence (closed at $90.165). Record now 2/3 right, trust 65%. id=p_132bdc55",
+  "blob_id": "P_g7zb2hQ9PugsJm2znc90dw-LgpsEfU6ypjoUrEXDY",
+  "at": "2026-11-07T07:39:02.697Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"Me\" was WRONG on ETH ABOVE $2246 at 65% confidence (closed at $2243). Record now 0/1 right, trust 36%. id=p_b9270cd7",
+  "blob_id": "Cc989sHHtVcX_1GlEi7bxbywajUBEyfp2rsF19lyEK0",
+  "at": "2026-11-07T07:38:44.541Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"Priya (desk analyst)\" was RIGHT on ETH BELOW $2257 at 70% confidence (closed at $2243). Record now 2/2 right, trust 79%. id=p_bd4c756f",
+  "blob_id": "TreTS5t0hFrGZopzuzg1o796mD61EHIEzvYMEzCxkiA",
+  "at": "2026-11-07T07:38:25.449Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@OnchainOtter\" was RIGHT on SUI BELOW $0.884 at 80% confidence (closed at $0.871). Record now 1/1 right, trust 75%. id=p_a26e5280",
+  "blob_id": "wRBREytHgN-7i_hk_Efyfm3FqBEh7OaNpnBMCdHq0fc",
+  "at": "2026-11-07T07:38:07.062Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" missed a 95%-confidence SUI call. Their high-conviction calls may be overconfident.",
+  "blob_id": "BAM42_QozXF-2j-kmVDI2GDCOgyRC2oeRAucQax8wHU",
+  "at": "2026-11-07T07:37:50.008Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@MoonBoyMax\" was WRONG on SUI ABOVE $0.915 at 95% confidence (closed at $0.871). Record now 0/2 right, trust 13%. id=p_e4c49e99",
+  "blob_id": "1CN1eqG7fNigq4DV_9b6oFB08REH2Lve6ya7AzoVGpM",
+  "at": "2026-11-07T07:37:31.671Z"
+ },
+ {
+  "kind": "lesson",
+  "text": "[hindsight:lesson] Voice \"@MoonBoyMax\" missed a 92%-confidence SOL call. Their high-conviction calls may be overconfident.",
+  "blob_id": "TcxOMnSHURSj5l8FNCTtQMayk4X4FK3fK4dC_pD-pAY",
+  "at": "2026-11-07T07:37:08.210Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"@MoonBoyMax\" was WRONG on SOL ABOVE $93.771 at 92% confidence (closed at $90.165). Record now 0/1 right, trust 19%. id=p_4a1db3c7",
+  "blob_id": "zU8s-p5IzX0zmpr6dZ8ohGwd0SxgBAyHtlv6P6d95f4",
+  "at": "2026-11-07T07:36:49.669Z"
+ },
+ {
+  "kind": "outcome",
+  "text": "[hindsight:outcome] Voice \"Priya (desk analyst)\" was RIGHT on BTC ABOVE $75531 at 75% confidence (closed at $75980). Record now 1/1 right, trust 74%. id=p_300f058e",
+  "blob_id": "KtXqrbTOj-pdvgXh6ry7-L_AO-ANU27_Nkv4Kijip_Y",
+  "at": "2026-11-07T07:36:29.967Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Priya (desk analyst)\" called BTC ABOVE $73707 by 2026-11-08 07:30 UTC with 70% confidence (price when called: $75987). Reasoning: Trend intact. id=p_88b7e5bb",
+  "blob_id": "HxXvofiex_MkdymrmWPmsjUic4rDAm0aqUHljzACR5g",
+  "at": "2026-11-07T07:36:10.300Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called BTC ABOVE $82065 by 2026-11-08 07:30 UTC with 95% confidence (price when called: $75987). Reasoning: Number go up. id=p_9d17205a",
+  "blob_id": "jjVKx4I2AbykEHX8vvK0pZXesUVesTc360o6UlhRt6w",
+  "at": "2026-11-07T07:35:53.452Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@OnchainOtter\" called SUI BELOW $0.897 by 2026-11-08 07:30 UTC with 80% confidence (price when called: $0.871). Reasoning: Flows still flat. id=p_8bb432b3",
+  "blob_id": "-6iEOlM7q00R34Xs6I3XgfgwTDdR_zG-u5a2_lovweo",
+  "at": "2026-11-07T07:35:36.100Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Priya (desk analyst)\" called SUI BELOW $0.897 by 2026-11-08 07:30 UTC with 70% confidence (price when called: $0.871). Reasoning: No catalyst this week. id=p_2f79639e",
+  "blob_id": "dR6H2ovg5OuBv0vTsr7e2-OcuC1Cik5tqAgAbKYYj5g",
+  "at": "2026-11-07T07:35:17.327Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Me\" called SUI ABOVE $0.897 by 2026-11-08 07:30 UTC with 60% confidence (price when called: $0.871). Reasoning: Following the hype. id=p_a7d779c3",
+  "blob_id": "9nUdtQF4bY-rMxwCbuhQGJcXy-qDWWKaV0jq5DZQlcE",
+  "at": "2026-11-07T07:34:58.475Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called SUI ABOVE $1.002 by 2026-11-08 07:30 UTC with 98% confidence (price when called: $0.871). Reasoning: Tomorrow we fly. id=p_ffa70ead",
+  "blob_id": "N9cMh4Bx4DbK7oUldAu1q6aEkJf7K0mBGvdpXbKB65Y",
+  "at": "2026-11-07T07:34:40.913Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Me\" called BTC BELOW $75911 by 2026-11-07 07:35 UTC with 60% confidence (price when called: $75987). Reasoning: Feels toppy. id=p_30dd5558",
+  "blob_id": "2tY6F0qN87lZsrHFB5jd29mdIyHN1SC-cX3SGV-vTlM",
+  "at": "2026-11-07T07:34:22.171Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Me\" called ETH ABOVE $2246 by 2026-11-07 07:32 UTC with 65% confidence (price when called: $2244). Reasoning: Gut feeling. id=p_b9270cd7",
+  "blob_id": "o2sEH-KO9Bq9xtazT1HwAi6sZiQSlEw2F-U5Ni1BT-M",
+  "at": "2026-11-07T07:34:02.758Z"
+ },
+ {
+  "kind": "voice",
+  "text": "[hindsight:voice] New voice \"Me\" is being tracked. Starting trust 50%.",
+  "blob_id": "zMPONP8X_-_9rFPeGpu74Mkcxewp-mVI2fTONlf4xpI",
+  "at": "2026-11-07T07:33:45.052Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@OnchainOtter\" called SUI BELOW $0.888 by 2026-11-07 07:35 UTC with 82% confidence (price when called: $0.871). Reasoning: No new liquidity this checkpoint range. id=p_4c212331",
+  "blob_id": "c0iRV6vN05iPbKQPPwQZA2CLCJYnDRwZKCHt-n_SAbw",
+  "at": "2026-11-07T07:33:26.828Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@OnchainOtter\" called SUI ABOVE $0.858 by 2026-11-07 07:33 UTC with 78% confidence (price when called: $0.871). Reasoning: Support at the epoch open. id=p_adf12094",
+  "blob_id": "A0uLJhgKwE68DHrhxMnniMDcfNBYYXfFk9WY-k6IwLU",
+  "at": "2026-11-07T07:33:10.471Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@OnchainOtter\" called SUI BELOW $0.884 by 2026-11-07 07:32 UTC with 80% confidence (price when called: $0.871). Reasoning: On-chain flows look flat. id=p_a26e5280",
+  "blob_id": "hjvK62aoKqrb8ucXu239zC5jPnvdHJ5_hnccS9ro1co",
+  "at": "2026-11-07T07:32:52.229Z"
+ },
+ {
+  "kind": "voice",
+  "text": "[hindsight:voice] New voice \"@OnchainOtter\" is being tracked, Sui address 0x4440be690d52c31e71dc38d7f5a4b7f8fe98187658098101fb238d39745482fe. Starting trust 50%.",
+  "blob_id": "mmnk7RUtHtVquRGjEl3ix-ChJV7RMECJPb144eIpT3U",
+  "at": "2026-11-07T07:32:34.484Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called SUI ABOVE $0.932 by 2026-11-07 07:35 UTC with 99% confidence (price when called: $0.871). Reasoning: Last chance to buy under a dollar. id=p_307edd64",
+  "blob_id": "PlvbtKb-t2MEMHrYTSFlxPrN-18oEYwv6F6QDjzY-Mk",
+  "at": "2026-11-07T07:32:15.573Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called BTC ABOVE $77886 by 2026-11-07 07:34 UTC with 90% confidence (price when called: $75987). Reasoning: Supercycle. id=p_840e1a1a",
+  "blob_id": "4fLM0xO6I3tcOwTIZ0yy-cVHaorBdIzqF6VVQj3LgTc",
+  "at": "2026-11-07T07:31:55.914Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called SUI ABOVE $0.923 by 2026-11-07 07:33 UTC with 97% confidence (price when called: $0.871). Reasoning: Whales loading up. id=p_328e3aad",
+  "blob_id": "kRCkxJM6-wwP0y-4OM4fYfTPpR3lUvRvQsmDfcQ-Yvw",
+  "at": "2026-11-07T07:31:36.131Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called SOL ABOVE $93.771 by 2026-11-07 07:32 UTC with 92% confidence (price when called: $90.165). Reasoning: Breakout confirmed, trust me. id=p_4a1db3c7",
+  "blob_id": "k2fBoTBK6FDY-lo9WaCAaFsYC_jnaj91LV9pvYI0o4k",
+  "at": "2026-11-07T07:31:17.133Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"@MoonBoyMax\" called SUI ABOVE $0.915 by 2026-11-07 07:32 UTC with 95% confidence (price when called: $0.871). Reasoning: SUI to the moon, send it!! id=p_e4c49e99",
+  "blob_id": "bvE1_PjWXV4-fez4fbxd2i3IyGV-gAgNQ7rPqZlVsk0",
+  "at": "2026-11-07T07:30:58.055Z"
+ },
+ {
+  "kind": "voice",
+  "text": "[hindsight:voice] New voice \"@MoonBoyMax\" is being tracked. Starting trust 50%.",
+  "blob_id": "82kCzEArhZGpvnmuR-tCm4zCBd7SES43Hk0lzzd00AM",
+  "at": "2026-11-07T07:30:40.817Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Priya (desk analyst)\" called SUI BELOW $0.880 by 2026-11-07 07:34 UTC with 72% confidence (price when called: $0.871). Reasoning: Resistance overhead. id=p_4ba45794",
+  "blob_id": "PXAc7s2VQ8-wcauBMPdqLQ9FfTvV_vYDy6dZr2rkCuM",
+  "at": "2026-11-07T07:30:22.563Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Priya (desk analyst)\" called SOL ABOVE $91.247 by 2026-11-07 07:33 UTC with 60% confidence (price when called: $90.165). Reasoning: Speculative breakout, small size. id=p_132bdc55",
+  "blob_id": "lrbDb3CgLMAoCM7w_5E8JUon6K8eGGsDU2dpV3yx3FM",
+  "at": "2026-11-07T07:30:03.593Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Priya (desk analyst)\" called ETH BELOW $2257 by 2026-11-07 07:32 UTC with 70% confidence (price when called: $2244). Reasoning: Range-bound, fading any spike. id=p_bd4c756f",
+  "blob_id": "9adiamnPrxn2QWhEVdbiO_r36SXGDOqFzqItJvD0yJc",
+  "at": "2026-11-07T07:29:46.173Z"
+ },
+ {
+  "kind": "pick",
+  "text": "[hindsight:pick] Voice \"Priya (desk analyst)\" called BTC ABOVE $75531 by 2026-11-07 07:31 UTC with 75% confidence (price when called: $75987). Reasoning: Bid wall holding, no reason to break down this hour. id=p_300f058e",
+  "blob_id": "0e1xoZR42QIZDlMYXOr5Gbj_G89w6_c4EnYBfhGm3-w",
+  "at": "2026-11-07T07:29:28.293Z"
+ },
+ {
+  "kind": "voice",
+  "text": "[hindsight:voice] New voice \"Priya (desk analyst)\" is being tracked. Starting trust 50%.",
+  "blob_id": "JulBgPezVNRXmeAPT7pg_SNjrj0hPlpEFFAD9KBCEBI",
+  "at": "2026-11-07T07:29:05.710Z"
+ },
+ {
+  "kind": "voice",
+  "text": "[hindsight:voice] Hindsight journal initialised. It will remember every market call, outcome and lesson about who to trust.",
+  "blob_id": "lUzOnGPUJXQ-zXrsPZtK4iUrIf3_vYLPJfKyYuNkycs",
+  "at": "2026-11-07T07:20:00.000Z"
+ }
+]

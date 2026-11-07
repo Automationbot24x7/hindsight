@@ -78,15 +78,17 @@ export function createHindsight(memory, log = console.log) {
 
   // ---------- lessons: patterns worth remembering ----------
   function deriveLessons(p, s) {
+    // Each lesson is keyed (voice + pattern [+ asset]) so it is learned and remembered once.
     const out = [];
-    const a = s.byAsset[p.asset];
-    if (s.streak <= -3) out.push(`Voice "${p.voice}" has been wrong ${-s.streak} times in a row. Fade or ignore their next call until they recover.`);
-    if (s.streak >= 3) out.push(`Voice "${p.voice}" is on a ${s.streak}-call hot streak. Their next call deserves extra weight.`);
-    if (a && a.n >= 3 && a.hits / a.n <= 0.34) out.push(`Voice "${p.voice}" is weak on ${p.asset}: only ${a.hits}/${a.n} right. Discount their ${p.asset} calls.`);
-    if (a && a.n >= 3 && a.hits / a.n >= 0.75) out.push(`Voice "${p.voice}" reads ${p.asset} well: ${a.hits}/${a.n} right. Trust their ${p.asset} calls.`);
-    if (p.status === "miss" && p.confidence >= 85) out.push(`Voice "${p.voice}" missed a ${p.confidence}%-confidence ${p.asset} call. Their high-conviction calls may be overconfident.`);
-    if (s.n >= 4 && s.calib < 0.6) out.push(`Voice "${p.voice}" is poorly calibrated: confidence does not match results. Treat their confidence numbers with caution.`);
-    return out.filter((t) => !state.lessons.some((l) => l.text === t));
+    const v = p.voice, a = s.byAsset[p.asset];
+    const boldMisses = state.picks.filter((x) => x.voice === v && x.status === "miss" && x.confidence >= 85).length;
+    if (s.streak <= -3) out.push([`cold:${v}`, `Voice "${v}" has been wrong ${-s.streak} times in a row. Fade or ignore their next call until they recover.`]);
+    if (s.streak >= 3) out.push([`hot:${v}`, `Voice "${v}" is on a ${s.streak}-call hot streak. Their next call deserves extra weight.`]);
+    if (a && a.n >= 3 && a.hits / a.n <= 0.34) out.push([`weak:${v}:${p.asset}`, `Voice "${v}" is weak on ${p.asset}: only ${a.hits}/${a.n} right. Discount their ${p.asset} calls.`]);
+    if (a && a.n >= 3 && a.hits / a.n >= 0.75) out.push([`strong:${v}:${p.asset}`, `Voice "${v}" reads ${p.asset} well: ${a.hits}/${a.n} right. Trust their ${p.asset} calls.`]);
+    if (p.status === "miss" && boldMisses >= 2) out.push([`bold:${v}`, `Voice "${v}" has missed ${boldMisses} calls made at 85%+ confidence. Their high-conviction calls are overconfident; discount their confidence.`]);
+    if (s.n >= 4 && s.calib < 0.6) out.push([`calib:${v}`, `Voice "${v}" is poorly calibrated: confidence does not match results. Treat their confidence numbers with caution.`]);
+    return out.filter(([key]) => !state.lessons.some((l) => l.key === key));
   }
 
   // ---------- actions ----------
@@ -147,8 +149,8 @@ export function createHindsight(memory, log = console.log) {
         const s = voiceStats(p.voice);
         save();
         memory.remember("outcome", outcomeLine(p, s));
-        for (const text of deriveLessons(p, s)) {
-          state.lessons.unshift({ text, at: new Date().toISOString(), voice: p.voice, asset: p.asset });
+        for (const [key, text] of deriveLessons(p, s)) {
+          state.lessons.unshift({ key, text, at: new Date().toISOString(), voice: p.voice, asset: p.asset });
           memory.remember("lesson", `[hindsight:lesson] ${text}`);
         }
         save();
