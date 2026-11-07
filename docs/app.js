@@ -45,7 +45,7 @@ async function detectSnapshot() {
     const r = await fetch("api/state");
     if (r.ok && (r.headers.get("content-type") || "").includes("json")) return;
   } catch {}
-  SNAP = await (await fetch("snapshot.json")).json();
+  SNAP = await (await fetch("snapshot.json", { cache: "no-cache" })).json();
   SNAP.state.readonly = true;
 }
 function snapApi(path, body) {
